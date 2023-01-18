@@ -5,7 +5,6 @@ import { observer } from 'mobx-react';
 import { Flexbox } from '../desygn-system/Flexbox';
 
 function TopBar(): JSX.Element {
-    console.log({ switch: store.switchTodoDone });
     return (
         <>
             <TextTitle>Lista de tareas</TextTitle>

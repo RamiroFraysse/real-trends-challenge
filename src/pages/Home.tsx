@@ -1,4 +1,4 @@
-// import styled from '@emotion/styled';
+import { observer } from 'mobx-react';
 import TodoAdd from '../components/TodoAdd';
 import TodosList from '../components/TodosList';
 import TopBar from '../components/TopBar';
@@ -20,4 +20,4 @@ function Home(): JSX.Element {
     );
 }
 
-export default Home;
+export default observer(Home);

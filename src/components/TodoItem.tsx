@@ -1,5 +1,5 @@
 import { Todo } from '../interfaces/interfaces';
-import { observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import store from '../store/store';
 import { useState } from 'react';
 import TodoEdit from './TodoEdit';
@@ -10,10 +10,10 @@ import { Flexbox } from '../desygn-system/Flexbox';
 
 interface Props {
     todo: Todo;
-    key: number;
+    key?: number;
 }
 
-function TodoItem({ todo, key = todo.id }: Props): JSX.Element {
+function TodoItem({ todo }: Props): JSX.Element {
     const { text } = todo;
     const [editTodo, setEditTodo] = useState(false);
 
@@ -26,9 +26,10 @@ function TodoItem({ todo, key = todo.id }: Props): JSX.Element {
 
     return (
         <>
-            <Flexbox key={key} gap="1em">
+            <Flexbox key={todo.id} gap="1em">
                 <Checkbox
                     type="checkbox"
+                    data-testid="checkbox-done"
                     checked={store.todos[todo.id].done}
                     onChange={(evt): void => {
                         store.updateTodo({ ...todo, done: !todo.done });

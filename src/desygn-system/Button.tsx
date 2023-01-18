@@ -13,9 +13,18 @@ const StyledButton = styled.button`
 
 interface Props {
     children: string;
+    disabled?: boolean;
     onClick?: () => void;
 }
 
-export default function Button({ children, onClick }: Props): JSX.Element {
-    return <StyledButton onClick={onClick}>{children}</StyledButton>;
+export default function Button({
+    children,
+    disabled,
+    onClick,
+}: Props): JSX.Element {
+    return (
+        <StyledButton onClick={onClick} disabled={disabled}>
+            {children}
+        </StyledButton>
+    );
 }

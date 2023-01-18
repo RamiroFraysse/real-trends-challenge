@@ -5,20 +5,14 @@ import TodoItem from './TodoItem';
 import { BoxShadow } from '../desygn-system/BoxShadow';
 
 function TodosList(): JSX.Element {
-    if (store.hideTodoDone)
-        return (
-            <BoxShadow>
-                {store.todos
-                    .filter(todo => !todo.done)
-                    .map((todo: Todo) => {
-                        return <TodoItem todo={todo} key={todo.id} />;
-                    })}
-            </BoxShadow>
-        );
-
+    let todosToShow = store.todos;
+    if (store.hideTodoDone) {
+        todosToShow = store.todos.filter(todo => !todo.done);
+    }
+    if (todosToShow.length === 0) return <></>;
     return (
         <BoxShadow>
-            {store.todos?.map((todo: Todo) => {
+            {todosToShow?.map((todo: Todo) => {
                 return <TodoItem todo={todo} key={todo.id} />;
             })}
         </BoxShadow>

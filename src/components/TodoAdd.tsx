@@ -10,12 +10,18 @@ function TodoAdd(): JSX.Element {
     return (
         <Flexbox justifyContent="center" gap="1em">
             <InputText
+                test-id="todoAdd-input"
                 type="text"
                 placeholder="Nueva Tarea"
                 onChange={handleChange}
+                onKeyDown={e => {
+                    if (e.key === 'Enter') handleSave();
+                }}
                 value={store.newTodo}
             />
-            <Button onClick={handleSave}>Agregar</Button>
+            <Button onClick={handleSave} disabled={store.newTodo === ''}>
+                Agregar
+            </Button>
         </Flexbox>
     );
 }
