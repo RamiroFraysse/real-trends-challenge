@@ -9,14 +9,15 @@ type FlexboxProps = {
 };
 
 export const Flexbox = styled.div`
-    overflow:hidden;
+    font-size:16px;
     display: flex;
     gap: ${(props: FlexboxProps) => props.gap};
     justify-content: ${(props: FlexboxProps) => props.justifyContent};
     flex-direction: ${(props: FlexboxProps) => props.flexDirection};
     margin: ${(props: FlexboxProps) => props.margin};
     width: ${(props: FlexboxProps) => props.width};
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
         width:100%;
+        fontSize:14px;
     }
 `;
