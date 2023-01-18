@@ -8,7 +8,7 @@ function Home(): JSX.Element {
     return (
         <Flexbox
             width="700px"
-            gap="30px"
+            gap="1.875em"
             margin="auto"
             justifyContent="center"
             flexDirection="column"

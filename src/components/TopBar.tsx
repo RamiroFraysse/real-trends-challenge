@@ -7,7 +7,7 @@ import { Flexbox } from '../desygn-system/Flexbox';
 function TopBar(): JSX.Element {
     return (
         <>
-            <TextTitle>Lista de tareas</TextTitle>
+            <TextTitle>Lista de tareass</TextTitle>
             <Flexbox justifyContent="center" gap="1em">
                 <Button
                     onClick={() => {
