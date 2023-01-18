@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+### OBJETIVO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Armar una simple aplicación “Lista de Tareas” teniendo en cuenta las siguientes historias de
+usuario:
 
-## Available Scripts
+-   Como usuario, debería poder agregar nuevas tareas a la lista completando un simple
+    formulario con un input y un botón.
+-   Como usuario, debería poder marcar y desmarcar la tarea de la lista haciendo clic en un
+    checkbox a la izquierda del texto de la tarea.
+-   Como usuario debería poder ocultar o mostrar las tareas completadas haciendo clic en un
+    botón que cambiará su texto entre “Mostrar completadas” y “Ocultar completadas” según
+    sea el caso.
+-   Como usuario, debería poder editar el texto de las tareas haciendo clic sobre su texto que
+    me mostrará un formulario de edición debajo de la tarea que se está editando. Al hacer clic
+    en “Guardar”, el texto previamente ingresado en el input deberá quedar impactado en el
+    texto de la tarea.
+-   Como usuario, debería poder actualizar la página, o cerrar y abrir el navegador, y seguir
+    viendo mis tareas y sus estados.
 
-In the project directory, you can run:
+### REQUERIMIENTOS
 
-### `npm start`
+Usar una combinación de estas seis tecnologías para lograr complir con el objetivo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   Create React App
+-   React Hooks
+-   Typescript
+-   MobX State Tree
+-   Local Storage
+-   Emotion (CSS-in-JS)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### PUNTOS A EVALUAR
 
-### `npm test`
+Aunque se tendrá en cuenta que la aplicación funcione como lo indican las historias de usuario, NO
+es un requisito excluyente ya que puede que la persona evaluada podría no conocer o no tener
+experiencia en ninguna o algunas de las tecnologías mencionadas en los Requerimientos.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Un punto muy importante, sea cual sea el caso, es la calidad de código: el código debe ser legible
+para humanos. Un código bien estructurado y con variables bien nombradas, es un código que se
+explica a sí mismo y es más fácil de leer para otros y para uno mismo en el futuro.
 
-### `npm run build`
+Un plus que aportará valor al código será la inclusión de test unitarios para las partes del código
+que se consideren críticas para lograr cumplir las historias de usuario. En caso de que la persona
+evaluada decida agregar tests, no se tendrá en cuenta el test coverage, sino si puede distinguir
+entre lo que es importante testear y lo que no.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+También se evaluará el CSS en contexto de CCS-in-JS.
