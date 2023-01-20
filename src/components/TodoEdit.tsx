@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import Button from '../desygn-system/Button';
-import { Flexbox } from '../desygn-system/Flexbox';
-import { InputText } from '../desygn-system/InputText';
+import { Button, Flexbox, InputText } from '../desygn-system';
 import { Todo } from '../interfaces/interfaces';
 
 interface Props {

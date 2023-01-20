@@ -20,11 +20,7 @@ interface Props {
     onClick?: () => void;
 }
 
-export default function Button({
-    children,
-    disabled,
-    onClick,
-}: Props): JSX.Element {
+export function Button({ children, disabled, onClick }: Props): JSX.Element {
     return (
         <StyledButton onClick={onClick} disabled={disabled}>
             {children}

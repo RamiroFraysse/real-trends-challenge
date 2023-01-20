@@ -12,8 +12,13 @@ export const TextTitle = styled.h1`
     }
 `;
 
-export const TextTodoDone = styled.p`
-    text-decoration: line-through;
+type TextTodoProps = {
+    done: boolean;
+    value: boolean;
+};
+
+export const TextTodo = styled.p`
+    text-decoration: ${(props: TextTodoProps) => props.done ? 'line-through' : 'none'};
     font-size: 1.25em;
     font-family: arial;
     @media (max-width: 600px) {
@@ -21,11 +26,4 @@ export const TextTodoDone = styled.p`
     }
 `;
 
-export const TextTodoUnDone = styled.p`
-    color: black;
-    font-size: 1.25em;
-    font-family: arial;
-    @media (max-width: 600px) {
-        font-size:14px
-    }
-`;
+

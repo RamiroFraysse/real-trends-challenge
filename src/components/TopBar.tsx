@@ -1,6 +1,4 @@
-import Button from '../desygn-system/Button';
-import { TextTitle } from '../desygn-system/Text';
-import { Flexbox } from '../desygn-system/Flexbox';
+import { Button, Flexbox, TextTitle } from '../desygn-system';
 import { useTodos } from '../hooks/useTodos';
 
 function TopBar(): JSX.Element {

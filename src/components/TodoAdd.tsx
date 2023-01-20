@@ -1,7 +1,5 @@
 import { useRef } from 'react';
-import Button from '../desygn-system/Button';
-import { Flexbox } from '../desygn-system/Flexbox';
-import { InputText } from '../desygn-system/InputText';
+import { Button, Flexbox, InputText } from '../desygn-system';
 import { useTodos } from '../hooks/useTodos';
 
 function TodoAdd(): JSX.Element {

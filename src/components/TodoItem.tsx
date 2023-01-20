@@ -1,9 +1,7 @@
 import { Todo } from '../interfaces/interfaces';
 import { useState } from 'react';
 import TodoEdit from './TodoEdit';
-import { TextTodoDone, TextTodoUnDone } from '../desygn-system/Text';
-import { Checkbox } from '../desygn-system/Checkbox';
-import { Flexbox } from '../desygn-system/Flexbox';
+import { Checkbox, Flexbox, TextTodo } from '../desygn-system';
 import { useTodos } from '../hooks/useTodos';
 
 interface Props {
@@ -26,29 +24,22 @@ function TodoItem({ todo }: Props): JSX.Element {
             <Flexbox key={todo.id} gap="1em">
                 <Checkbox
                     type="checkbox"
-                    data-testid="checkbox-done"
+                    data-testid="checkbox-toggledone"
                     checked={todo.done}
                     onChange={(evt): void => {
                         toggleTodo(todo.id);
                     }}
                 />
-                {todo.done ? (
-                    <TextTodoDone
-                        onClick={() => {
-                            setEditTodo(!editTodo);
-                        }}
-                    >
-                        {text}
-                    </TextTodoDone>
-                ) : (
-                    <TextTodoUnDone
-                        onClick={() => {
-                            setEditTodo(!editTodo);
-                        }}
-                    >
-                        {text}
-                    </TextTodoUnDone>
-                )}
+                <TextTodo
+                    done={todo.done}
+                    value={todo.done}
+                    data-testid="description-todo"
+                    onClick={() => {
+                        setEditTodo(!editTodo);
+                    }}
+                >
+                    {text}
+                </TextTodo>
             </Flexbox>
             <div>
                 {editTodo && (

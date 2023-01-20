@@ -1,6 +1,6 @@
 import { Todo } from '../interfaces/interfaces';
 import TodoItem from './TodoItem';
-import { BoxShadow } from '../desygn-system/BoxShadow';
+import { BoxShadow } from '../desygn-system';
 import { useTodos } from '../hooks/useTodos';
 
 function TodosList(): JSX.Element {
