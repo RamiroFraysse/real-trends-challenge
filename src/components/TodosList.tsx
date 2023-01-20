@@ -1,13 +1,13 @@
-import store from '../store/store';
-import { observer } from 'mobx-react';
 import { Todo } from '../interfaces/interfaces';
 import TodoItem from './TodoItem';
 import { BoxShadow } from '../desygn-system/BoxShadow';
+import { useTodos } from '../hooks/useTodos';
 
 function TodosList(): JSX.Element {
-    let todosToShow = store.todos;
-    if (store.hideTodoDone) {
-        todosToShow = store.todos.filter(todo => !todo.done);
+    const { todos, hideTodoDone } = useTodos();
+    let todosToShow = todos;
+    if (hideTodoDone) {
+        todosToShow = todos.filter(todo => !todo.done);
     }
     if (todosToShow.length === 0) return <></>;
     return (
@@ -19,4 +19,4 @@ function TodosList(): JSX.Element {
     );
 }
 
-export default observer(TodosList);
+export default TodosList;

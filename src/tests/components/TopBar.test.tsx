@@ -1,8 +1,13 @@
 import TopBar from '../../components/TopBar';
 import { render, screen, fireEvent } from '@testing-library/react';
+import TodoProvider from '../../context/TodoProvider';
 
 beforeEach(() => {
-    render(<TopBar />);
+    render(
+        <TodoProvider initialHideTodoDone={true}>
+            <TopBar />
+        </TodoProvider>,
+    );
 });
 
 describe('TopBar', () => {

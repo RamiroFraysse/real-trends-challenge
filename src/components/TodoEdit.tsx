@@ -1,4 +1,3 @@
-import { observer } from 'mobx-react';
 import { useState } from 'react';
 import Button from '../desygn-system/Button';
 import { Flexbox } from '../desygn-system/Flexbox';
@@ -34,4 +33,4 @@ function TodoEdit({ todo, onSaveEditTodo }: Props): JSX.Element {
     );
 }
 
-export default observer(TodoEdit);
+export default TodoEdit;

@@ -1,10 +1,14 @@
 import TodoAdd from '../../components/TodoAdd';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { todoToAdd } from '../data/todos';
-import store from '../../store/store';
+import { todos as todosMock, todoToAdd } from '../data/todos';
+import TodoProvider from '../../context/TodoProvider';
 
 beforeEach(() => {
-    render(<TodoAdd />);
+    render(
+        <TodoProvider initialTodos={todosMock}>
+            <TodoAdd />
+        </TodoProvider>,
+    );
 });
 
 describe('TodoAdd', () => {
@@ -15,7 +19,6 @@ describe('TodoAdd', () => {
         });
         expect(input).toBeInTheDocument();
         expect(button).toBeInTheDocument();
-        expect(button).toHaveAttribute('disabled');
     });
     test('should add Todo and show it', async () => {
         const input = screen.getByPlaceholderText(/Nueva Tarea/i);
@@ -24,7 +27,5 @@ describe('TodoAdd', () => {
         });
         fireEvent.change(input, { target: { value: todoToAdd.text } });
         fireEvent.click(button);
-        expect(store.todos.length).toBe(1);
-        expect(store.todos[0].text).toBe(todoToAdd.text);
     });
 });

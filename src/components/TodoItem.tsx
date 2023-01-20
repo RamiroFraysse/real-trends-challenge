@@ -1,12 +1,10 @@
 import { Todo } from '../interfaces/interfaces';
-import { observer } from 'mobx-react-lite';
-import store from '../store/store';
 import { useState } from 'react';
 import TodoEdit from './TodoEdit';
-import useTodo from '../hooks/useTodo';
 import { TextTodoDone, TextTodoUnDone } from '../desygn-system/Text';
 import { Checkbox } from '../desygn-system/Checkbox';
 import { Flexbox } from '../desygn-system/Flexbox';
+import { useTodos } from '../hooks/useTodos';
 
 interface Props {
     todo: Todo;
@@ -14,13 +12,12 @@ interface Props {
 }
 
 function TodoItem({ todo }: Props): JSX.Element {
+    const { toggleTodo, updateTodo } = useTodos();
     const { text } = todo;
     const [editTodo, setEditTodo] = useState(false);
 
-    const { handleSaveEditTodo } = useTodo();
-
     const handleSave = (todo: Todo): void => {
-        handleSaveEditTodo(todo);
+        updateTodo(todo);
         setEditTodo(!editTodo);
     };
 
@@ -30,12 +27,12 @@ function TodoItem({ todo }: Props): JSX.Element {
                 <Checkbox
                     type="checkbox"
                     data-testid="checkbox-done"
-                    checked={store.todos[todo.id].done}
+                    checked={todo.done}
                     onChange={(evt): void => {
-                        store.updateTodo({ ...todo, done: !todo.done });
+                        toggleTodo(todo.id);
                     }}
                 />
-                {store.todos[todo.id].done ? (
+                {todo.done ? (
                     <TextTodoDone
                         onClick={() => {
                             setEditTodo(!editTodo);
@@ -62,4 +59,4 @@ function TodoItem({ todo }: Props): JSX.Element {
     );
 }
 
-export default observer(TodoItem);
+export default TodoItem;

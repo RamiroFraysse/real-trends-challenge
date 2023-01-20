@@ -1,29 +1,36 @@
-import { observer } from 'mobx-react';
+import { useRef } from 'react';
 import Button from '../desygn-system/Button';
 import { Flexbox } from '../desygn-system/Flexbox';
 import { InputText } from '../desygn-system/InputText';
-import useTodo from '../hooks/useTodo';
-import store from '../store/store';
+import { useTodos } from '../hooks/useTodos';
 
 function TodoAdd(): JSX.Element {
-    const { handleChange, handleSave } = useTodo();
+    const inputRef = useRef<any>(null);
+    const { addTodo } = useTodos();
     return (
         <Flexbox justifyContent="center" gap="1em">
             <InputText
                 test-id="todoAdd-input"
                 type="text"
                 placeholder="Nueva Tarea"
-                onChange={handleChange}
+                ref={inputRef}
                 onKeyDown={e => {
-                    if (e.key === 'Enter') handleSave();
+                    if (e.key === 'Enter') {
+                        addTodo(inputRef.current.value);
+                        inputRef.current.value = '';
+                    }
                 }}
-                value={store.newTodo}
             />
-            <Button onClick={handleSave} disabled={store.newTodo === ''}>
+            <Button
+                onClick={() => {
+                    addTodo(inputRef.current.value);
+                    inputRef.current.value = '';
+                }}
+            >
                 Agregar
             </Button>
         </Flexbox>
     );
 }
 
-export default observer(TodoAdd);
+export default TodoAdd;

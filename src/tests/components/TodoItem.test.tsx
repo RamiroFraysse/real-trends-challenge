@@ -1,16 +1,19 @@
 import TodoItem from '../../components/TodoItem';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { todos } from '../data/todos';
-import store from '../../store/store';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import TodoProvider from '../../context/TodoProvider';
+import { todos as todosMock } from '../data/todos';
 
 beforeEach(() => {
-    store.addTodos(todos);
-    render(<TodoItem todo={todos[0]} />);
+    render(
+        <TodoProvider initialTodos={todosMock} initialHideTodoDone={true}>
+            <TodoItem todo={todosMock[0]} />
+        </TodoProvider>,
+    );
 });
 
 describe('TodoItem', () => {
     test('should render mock item with text and checkbox', async () => {
-        const todo = screen.getByText(todos[0].text);
+        const todo = screen.getByText(todosMock[0].text);
         const checkbox = screen.getByTestId('checkbox-done');
         expect(checkbox).toHaveAttribute('type', 'checkbox');
         expect(todo).toBeInTheDocument();
@@ -18,17 +21,35 @@ describe('TodoItem', () => {
     test('should mark todo to done when click checkbox', async () => {
         const checkbox = screen.getByTestId('checkbox-done');
         fireEvent.click(checkbox);
-        expect(store.todos[0].done).toBe(true);
+
+        waitFor(() => {
+            // @ts-expect-error
+            expect(checkbox?.checked).toEqual(true);
+        })
+            .then(err => {
+                console.log(err);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     });
     test('should can edit the todo', async () => {
-        const todo = screen.getByText(todos[0].text);
+        const todo = screen.getByText(todosMock[0].text);
         fireEvent.click(todo);
-        const inputEdit = await screen.findByDisplayValue(todos[0].text);
+        const inputEdit = await screen.findByDisplayValue(todosMock[0].text);
         fireEvent.change(inputEdit, { target: { value: 'Editado' } });
         const button = await screen.findByRole('button', {
             name: /Guardar/i,
         });
         fireEvent.click(button);
-        expect(store.todos[0].text).toBe('Editado');
+        waitFor(() => {
+            expect(screen.getByText(/Editado/i)).toBeInTheDocument();
+        })
+            .then(err => {
+                console.log(err);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     });
 });

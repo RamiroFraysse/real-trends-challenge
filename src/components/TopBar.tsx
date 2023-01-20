@@ -1,20 +1,21 @@
 import Button from '../desygn-system/Button';
 import { TextTitle } from '../desygn-system/Text';
-import store from '../store/store';
-import { observer } from 'mobx-react';
 import { Flexbox } from '../desygn-system/Flexbox';
+import { useTodos } from '../hooks/useTodos';
 
 function TopBar(): JSX.Element {
+    const { hideTodoDone, switchTodoDone } = useTodos();
+
     return (
         <>
             <TextTitle>Lista de tareas</TextTitle>
             <Flexbox justifyContent="center" gap="1em">
                 <Button
                     onClick={() => {
-                        store.switchTodoDone();
+                        switchTodoDone(!hideTodoDone);
                     }}
                 >
-                    {store.hideTodoDone
+                    {hideTodoDone
                         ? 'Mostrar Completadas'
                         : 'Ocultar completadas'}
                 </Button>
@@ -23,4 +24,4 @@ function TopBar(): JSX.Element {
     );
 }
 
-export default observer(TopBar);
+export default TopBar;
